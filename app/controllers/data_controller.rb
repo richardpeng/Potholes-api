@@ -42,6 +42,13 @@ class DataController < ApplicationController
               exists: {
                 field: 'longitude'
               }
+            },
+            {
+              range: {
+                time: {
+                  gte: 1560096000000
+                }
+              }
             }
           ]
         }
