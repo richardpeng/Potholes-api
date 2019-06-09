@@ -1,24 +1,7 @@
-# README
+# Road Radar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Road Radar reports the road conditions that users have traveled on. You can drive with this application to help your city locate sections of roads that are in critical need of repair.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project depends on an Elasticsearch backend configured by the `ELASTICSEARCH_URL` environment variable.
