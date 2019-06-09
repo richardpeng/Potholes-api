@@ -1,5 +1,7 @@
 require 'elasticsearch'
 class DataController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :raw
+
   def raw
     data = JSON.parse request.body.read
     bulk = data.map do |d|
