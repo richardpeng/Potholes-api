@@ -46,7 +46,8 @@ class DataController < ApplicationController
             {
               range: {
                 time: {
-                  gte: 1560096000000
+                  gte: 1560096000000,
+                  lte: 1560097800000
                 }
               }
             }
