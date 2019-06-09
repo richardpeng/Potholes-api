@@ -16,7 +16,7 @@ class DataController < ApplicationController
     client = Elasticsearch::Client.new log: true, url: ENV['ELASTICSEARCH_URL']
     client.bulk body: bulk
 
-    render :nothing
+    render head :ok
   end
 
   def map
