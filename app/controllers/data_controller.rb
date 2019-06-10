@@ -13,14 +13,14 @@ class DataController < ApplicationController
         }
       }
     end
-    client = Elasticsearch::Client.new log: true, url: ENV['ELASTICSEARCH_URL']
+    client = Elasticsearch::Client.new log: Rails.env.development?, url: ENV['ELASTICSEARCH_URL']
     client.bulk body: bulk
 
     head :ok
   end
 
   def map
-    client = Elasticsearch::Client.new log: true, url: ENV['ELASTICSEARCH_URL']
+    client = Elasticsearch::Client.new log: Rails.env.development?, url: ENV['ELASTICSEARCH_URL']
     data = client.search index: 'raw', body: {
       size: 10_000,
       sort: [
