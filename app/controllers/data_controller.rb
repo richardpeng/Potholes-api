@@ -22,7 +22,15 @@ class DataController < ApplicationController
   def map
     client = Elasticsearch::Client.new log: true, url: ENV['ELASTICSEARCH_URL']
     data = client.search index: 'raw', body: {
-      size: 10000,
+      size: 10_000,
+      sort: [
+        {
+          time: {
+            order: 'desc'
+          }
+        }
+      ],
+      _source: %w[magnitude latitude longitude],
       query: {
         bool: {
           must: [
@@ -41,14 +49,6 @@ class DataController < ApplicationController
             {
               exists: {
                 field: 'longitude'
-              }
-            },
-            {
-              range: {
-                time: {
-                  gte: 1560096000000,
-                  lte: 1560097800000
-                }
               }
             }
           ]
